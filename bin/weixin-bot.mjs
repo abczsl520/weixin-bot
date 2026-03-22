@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * weixin-bot — One-command WeChat AI Bot
+ * wx-ai-bot — One-command WeChat AI Bot
  *
  * Usage:
  *   npx wx-ai-bot                          # Interactive setup
@@ -30,13 +30,13 @@ const { values: args } = parseArgs({
 
 if (args.version) {
   const pkg = JSON.parse((await import('fs')).readFileSync(new URL('../package.json', import.meta.url), 'utf-8'));
-  console.log(`weixin-bot v${pkg.version}`);
+  console.log(`wx-ai-bot v${pkg.version}`);
   process.exit(0);
 }
 
 if (args.help) {
   console.log(`
-  🤖 weixin-bot — One-command WeChat AI Bot
+  🤖 wx-ai-bot — One-command WeChat AI Bot
 
   Usage:
     npx wx-ai-bot                    Interactive setup (first time)
@@ -74,7 +74,7 @@ if (args.help) {
 }
 
 async function main() {
-  console.log('\n  🤖 weixin-bot — One-command WeChat AI Bot\n');
+  console.log('\n  🤖 wx-ai-bot — One-command WeChat AI Bot\n');
 
   let config = loadConfigWithKey();
 

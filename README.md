@@ -4,7 +4,7 @@
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/零依赖-brightgreen?style=for-the-badge" alt="Zero Dependencies" />
 
-# 🤖 weixin-bot
+# 🤖 wx-ai-bot
 
 ### 一条命令，微信 AI 机器人上线
 
@@ -14,7 +14,7 @@ npx wx-ai-bot
 
 **不需要服务器。不需要配置文件。不需要安装依赖。直接跑。**
 
-[![npm version](https://img.shields.io/npm/v/weixin-bot.svg?style=flat-square)](https://www.npmjs.com/package/weixin-bot)
+[![npm version](https://img.shields.io/npm/v/wx-ai-bot.svg?style=flat-square)](https://www.npmjs.com/package/wx-ai-bot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg?style=flat-square)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue.svg?style=flat-square)](#-docker)
@@ -59,7 +59,7 @@ node -v
 npx wx-ai-bot
 ```
 
-> `npx` 是 Node.js 自带的工具，会自动下载并运行 weixin-bot，不需要你手动安装任何东西。
+> `npx` 是 Node.js 自带的工具，会自动下载并运行 wx-ai-bot，不需要你手动安装任何东西。
 
 ### 第 3 步：选择 AI 提供商
 
@@ -106,7 +106,7 @@ npx wx-ai-bot
 ```bash
 $ npx wx-ai-bot
 
-  🤖 weixin-bot — 一键微信 AI 机器人
+  🤖 wx-ai-bot — 一键微信 AI 机器人
 
   首次使用？来设置你的 AI 后端。
 
@@ -133,7 +133,7 @@ $ npx wx-ai-bot
 
   ✅ 登录成功！Bot ID: wx_bot_xxx
 
-  🤖 weixin-bot 已启动！
+  🤖 wx-ai-bot 已启动！
   AI: openai (gpt-4o-mini)
   按 Ctrl+C 停止。
 ```
@@ -188,7 +188,7 @@ npx wx-ai-bot --provider claude-code --api-key sk-ant-xxx
 
 ## 🔄 自动重连
 
-Session 过期？没问题。`weixin-bot` 自动处理：
+Session 过期？没问题。`wx-ai-bot` 自动处理：
 
 ```
   ⚠️ Session 过期 (code: -14)
@@ -206,13 +206,13 @@ Session 过期？没问题。`weixin-bot` 自动处理：
 
 ```bash
 # 构建
-docker build -t weixin-bot .
+docker build -t wx-ai-bot .
 
 # 运行
 docker run -it \
   -v weixin-bot-data:/home/botuser/.weixin-bot \
   -e OPENAI_API_KEY=sk-xxx \
-  weixin-bot
+  wx-ai-bot
 ```
 
 Alpine 镜像。非 root。零依赖。镜像 < 50MB。
@@ -244,7 +244,7 @@ Alpine 镜像。非 root。零依赖。镜像 < 50MB。
                                     long-poll  │
                                                ▼
                                     ┌─────────────────────┐
-                                    │  weixin-bot          │
+                                    │  wx-ai-bot           │
                                     │  (你的电脑)          │
                                     └──────────┬──────────┘
                                                │

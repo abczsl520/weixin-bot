@@ -4,7 +4,7 @@
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/Zero_Deps-brightgreen?style=for-the-badge" alt="Zero Dependencies" />
 
-# 🤖 weixin-bot
+# 🤖 wx-ai-bot
 
 ### One command. Your WeChat AI bot is live.
 
@@ -14,7 +14,7 @@ npx wx-ai-bot
 
 **No server. No config files. No dependencies. Just run it.**
 
-[![npm version](https://img.shields.io/npm/v/weixin-bot.svg?style=flat-square)](https://www.npmjs.com/package/weixin-bot)
+[![npm version](https://img.shields.io/npm/v/wx-ai-bot.svg?style=flat-square)](https://www.npmjs.com/package/wx-ai-bot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg?style=flat-square)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue.svg?style=flat-square)](#-docker)
@@ -38,7 +38,7 @@ npx wx-ai-bot
 ```bash
 $ npx wx-ai-bot
 
-  🤖 weixin-bot — One-command WeChat AI Bot
+  🤖 wx-ai-bot — One-command WeChat AI Bot
 
   First time? Let's set up your AI backend.
 
@@ -65,7 +65,7 @@ $ npx wx-ai-bot
 
   ✅ Login successful! Bot ID: wx_bot_xxx
 
-  🤖 weixin-bot is running!
+  🤖 wx-ai-bot is running!
   AI: openai (gpt-4o-mini)
   Press Ctrl+C to stop.
 ```
@@ -125,11 +125,11 @@ Session expired? No problem. Exponential backoff: 3s → 5s → 10s → 20s → 
 ## 🐳 Docker
 
 ```bash
-docker build -t weixin-bot .
+docker build -t wx-ai-bot .
 docker run -it \
   -v weixin-bot-data:/home/botuser/.weixin-bot \
   -e OPENAI_API_KEY=sk-xxx \
-  weixin-bot
+  wx-ai-bot
 ```
 
 Alpine-based. Non-root. Image size < 50MB.
@@ -159,7 +159,7 @@ Alpine-based. Non-root. Image size < 50MB.
                                     long-poll  │
                                                ▼
                                     ┌─────────────────────┐
-                                    │  weixin-bot          │
+                                    │  wx-ai-bot           │
                                     │  (your machine)      │
                                     └──────────┬──────────┘
                                                │
