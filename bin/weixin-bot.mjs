@@ -29,7 +29,8 @@ const { values: args } = parseArgs({
 });
 
 if (args.version) {
-  console.log('weixin-bot v1.0.0');
+  const pkg = JSON.parse((await import('fs')).readFileSync(new URL('../package.json', import.meta.url), 'utf-8'));
+  console.log(`weixin-bot v${pkg.version}`);
   process.exit(0);
 }
 
