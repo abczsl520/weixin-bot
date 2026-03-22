@@ -1,0 +1,30 @@
+{
+  "name": "weixin-bot",
+  "version": "1.0.0",
+  "description": "One-command WeChat AI Bot — npx weixin-bot and you're live. Supports OpenAI, Claude, Gemini, Ollama, or any OpenAI-compatible API.",
+  "type": "module",
+  "bin": {
+    "weixin-bot": "bin/weixin-bot.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abczsl520/weixin-bot.git"
+  },
+  "homepage": "https://github.com/abczsl520/weixin-bot#readme",
+  "keywords": [
+    "weixin", "wechat", "bot", "chatbot", "ai",
+    "openai", "claude", "gemini", "ollama",
+    "ilink", "cli", "npx"
+  ],
+  "author": "abczsl520",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
