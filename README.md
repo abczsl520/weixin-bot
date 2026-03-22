@@ -74,8 +74,24 @@ OPENAI_API_KEY=sk-xxx npx weixin-bot
 | Claude | `--provider claude --api-key sk-ant-xxx` | No |
 | Gemini | `--provider gemini --api-key xxx` | Free tier |
 | Ollama | `--provider ollama --model llama3` | ✅ Yes (local) |
+| Codex | `--provider codex` | Needs OpenAI key |
+| Claude Code | `--provider claude-code` | Needs Anthropic key |
 | Custom | `--provider custom --base-url URL --api-key KEY` | Varies |
 | Echo | `--echo` | ✅ Yes |
+
+### Agent Providers (Codex & Claude Code)
+
+These run as local coding agents — they can read files, run commands, and write code:
+
+```bash
+# OpenAI Codex agent (requires: npm i -g @openai/codex)
+npx weixin-bot --provider codex --api-key sk-xxx
+
+# Claude Code agent (requires: npm i -g @anthropic-ai/claude-code)
+npx weixin-bot --provider claude-code --api-key sk-ant-xxx
+```
+
+Send a message like "create a hello world Python script" and the agent will actually do it.
 
 ## Built-in Commands
 
@@ -141,6 +157,8 @@ npx weixin-bot
 | Claude | `--provider claude --api-key sk-ant-xxx` | 否 |
 | Gemini | `--provider gemini --api-key xxx` | 有免费额度 |
 | Ollama | `--provider ollama --model llama3` | ✅ 免费（本地） |
+| Codex | `--provider codex` | 需 OpenAI key |
+| Claude Code | `--provider claude-code` | 需 Anthropic key |
 | 自定义 | `--provider custom --base-url URL --api-key KEY` | 看情况 |
 | 回声模式 | `--echo` | ✅ 免费 |
 
