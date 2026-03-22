@@ -27,9 +27,9 @@ npx weixin-bot
 
 ## ⚠️ Compatibility
 
-> **Currently supports iOS WeChat 8.0.70 only.** Android is not yet supported (pending WeChat's official rollout).
+> **iOS**: Supports WeChat 8.0.70. After updating to the latest version, you must **force-quit WeChat from the background and reopen it** before the bot can connect.
 >
-> After updating iOS WeChat to the latest version, you must **force-quit WeChat from the background and reopen it** before the bot can connect.
+> **Android**: Now supported! After generating the QR code with the SDK or Bot, scanning it will prompt a WeChat update. Download the update and scan again. Android may have some bugs — please test first.
 
 ---
 
