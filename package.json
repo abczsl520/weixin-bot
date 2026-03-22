@@ -1,10 +1,10 @@
 {
-  "name": "weixin-bot",
+  "name": "wx-ai-bot",
   "version": "1.1.0",
   "description": "One-command WeChat AI Bot — npx weixin-bot and you're live. Supports OpenAI, Claude, Gemini, Ollama, Codex, Claude Code, OpenClaw, or any OpenAI-compatible API.",
   "type": "module",
   "bin": {
-    "weixin-bot": "bin/weixin-bot.mjs"
+    "wx-ai-bot": "bin/weixin-bot.mjs"
   },
   "files": [
     "bin/",

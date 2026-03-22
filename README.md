@@ -9,7 +9,7 @@
 ### 一条命令，微信 AI 机器人上线
 
 ```bash
-npx weixin-bot
+npx wx-ai-bot
 ```
 
 **不需要服务器。不需要配置文件。不需要安装依赖。直接跑。**
@@ -33,10 +33,78 @@ npx weixin-bot
 
 ---
 
+## 📖 从零开始（小白教程）
+
+完全没用过终端？没关系，跟着下面一步步来：
+
+### 第 1 步：安装 Node.js
+
+去 [nodejs.org](https://nodejs.org) 下载 **LTS 版本**（绿色按钮），双击安装，一路下一步就行。
+
+怎么确认装好了？打开终端，输入：
+```bash
+node -v
+```
+看到类似 `v22.x.x` 就说明装好了。
+
+> **怎么打开终端？**
+> - **Mac**：按 `Command + 空格`，输入"终端"，回车
+> - **Windows**：按 `Win + R`，输入 `cmd`，回车（或搜索"PowerShell"）
+> - **Linux**：按 `Ctrl + Alt + T`
+
+### 第 2 步：一条命令启动
+
+在终端里输入：
+```bash
+npx wx-ai-bot
+```
+
+> `npx` 是 Node.js 自带的工具，会自动下载并运行 weixin-bot，不需要你手动安装任何东西。
+
+### 第 3 步：选择 AI 提供商
+
+终端会显示菜单，输入数字选择：
+
+```
+  AI 提供商：
+    1) OpenAI        ← 最常用，需要 API key
+    2) Claude
+    3) Gemini        ← Google 的，有免费额度
+    4) Ollama        ← 本地运行，完全免费
+    ...
+    9) Echo mode     ← 测试用，不需要任何 key
+```
+
+**新手建议**：先选 `9`（回声模式）测试一下流程，确认能跑通再换成真正的 AI。
+
+### 第 4 步：扫码登录
+
+终端会显示一个二维码，用**微信扫一扫**扫它。
+
+扫完在手机上确认，终端显示 `✅ 登录成功` 就 OK 了。
+
+### 第 5 步：开始聊天
+
+现在用另一个微信号给你的 Bot 发消息试试！Bot 会自动回复。
+
+按 `Ctrl + C` 可以随时停止。
+
+### 常见问题
+
+| 问题 | 解决 |
+|------|------|
+| `npx` 命令找不到 | Node.js 没装好，重新装一遍 |
+| 二维码扫不了 | 终端窗口拉宽一点，或者复制链接到浏览器打开 |
+| 扫码后没反应 | iOS 需要微信 8.0.70+；安卓扫码后按提示更新微信 |
+| Bot 收不到消息 | 要用**另一个微信号**给 Bot 发消息，不能自己给自己发 |
+| API key 怎么获取 | OpenAI: [platform.openai.com](https://platform.openai.com/api-keys)，Gemini: [aistudio.google.com](https://aistudio.google.com/apikey) |
+
+---
+
 ## ⚡ 30 秒上手
 
 ```bash
-$ npx weixin-bot
+$ npx wx-ai-bot
 
   🤖 weixin-bot — 一键微信 AI 机器人
 
@@ -94,10 +162,10 @@ $ npx weixin-bot
 
 ```bash
 # 你的微信变成 Codex 终端
-npx weixin-bot --provider codex --api-key sk-xxx
+npx wx-ai-bot --provider codex --api-key sk-xxx
 
 # 或者 Claude Code 终端
-npx weixin-bot --provider claude-code --api-key sk-ant-xxx
+npx wx-ai-bot --provider claude-code --api-key sk-ant-xxx
 ```
 
 ---
@@ -205,7 +273,7 @@ Alpine 镜像。非 root。零依赖。镜像 < 50MB。
 ## 🚀 所有选项
 
 ```bash
-npx weixin-bot [选项]
+npx wx-ai-bot [选项]
 
 选项：
   --provider <name>   openai | claude | gemini | ollama | codex | claude-code | openclaw | custom

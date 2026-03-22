@@ -3,11 +3,11 @@
  * weixin-bot — One-command WeChat AI Bot
  *
  * Usage:
- *   npx weixin-bot                          # Interactive setup
- *   npx weixin-bot --api-key sk-xxx         # With OpenAI key
- *   npx weixin-bot --provider ollama        # Use local Ollama
- *   npx weixin-bot --login                  # Force re-login
- *   npx weixin-bot --echo                   # Simple echo mode (no AI)
+ *   npx wx-ai-bot                          # Interactive setup
+ *   npx wx-ai-bot --api-key sk-xxx         # With OpenAI key
+ *   npx wx-ai-bot --provider ollama        # Use local Ollama
+ *   npx wx-ai-bot --login                  # Force re-login
+ *   npx wx-ai-bot --echo                   # Simple echo mode (no AI)
  */
 import { parseArgs } from 'node:util';
 import { startBot } from '../lib/bot.mjs';
@@ -39,11 +39,11 @@ if (args.help) {
   🤖 weixin-bot — One-command WeChat AI Bot
 
   Usage:
-    npx weixin-bot                    Interactive setup (first time)
-    npx weixin-bot --echo             Echo mode (no AI, just replies)
-    npx weixin-bot --api-key sk-xxx   Use OpenAI with this key
-    npx weixin-bot --provider ollama  Use local Ollama
-    npx weixin-bot --login            Force re-login (new QR code)
+    npx wx-ai-bot                    Interactive setup (first time)
+    npx wx-ai-bot --echo             Echo mode (no AI, just replies)
+    npx wx-ai-bot --api-key sk-xxx   Use OpenAI with this key
+    npx wx-ai-bot --provider ollama  Use local Ollama
+    npx wx-ai-bot --login            Force re-login (new QR code)
 
   Options:
     --provider <name>   AI provider: openai | claude | gemini | ollama | codex | claude-code | openclaw | custom
@@ -61,14 +61,14 @@ if (args.help) {
     GEMINI_API_KEY      Gemini API key
 
   Examples:
-    npx weixin-bot --provider openai --api-key sk-xxx --model gpt-4o
-    npx weixin-bot --provider claude --api-key sk-ant-xxx
-    npx weixin-bot --provider ollama --model llama3
-    npx weixin-bot --provider codex                  # OpenAI Codex agent (local CLI)
-    npx weixin-bot --provider claude-code             # Claude Code agent (local CLI)
-    npx weixin-bot --provider custom --base-url https://my-proxy.com/v1 --api-key xxx
-    npx weixin-bot --provider openclaw                # OpenClaw AI gateway (auto-detect local)
-    OPENAI_API_KEY=sk-xxx npx weixin-bot
+    npx wx-ai-bot --provider openai --api-key sk-xxx --model gpt-4o
+    npx wx-ai-bot --provider claude --api-key sk-ant-xxx
+    npx wx-ai-bot --provider ollama --model llama3
+    npx wx-ai-bot --provider codex                  # OpenAI Codex agent (local CLI)
+    npx wx-ai-bot --provider claude-code             # Claude Code agent (local CLI)
+    npx wx-ai-bot --provider custom --base-url https://my-proxy.com/v1 --api-key xxx
+    npx wx-ai-bot --provider openclaw                # OpenClaw AI gateway (auto-detect local)
+    OPENAI_API_KEY=sk-xxx npx wx-ai-bot
 `);
   process.exit(0);
 }

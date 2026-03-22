@@ -9,7 +9,7 @@
 ### One command. Your WeChat AI bot is live.
 
 ```bash
-npx weixin-bot
+npx wx-ai-bot
 ```
 
 **No server. No config files. No dependencies. Just run it.**
@@ -36,7 +36,7 @@ npx weixin-bot
 ## ⚡ 30-Second Demo
 
 ```bash
-$ npx weixin-bot
+$ npx wx-ai-bot
 
   🤖 weixin-bot — One-command WeChat AI Bot
 
@@ -94,10 +94,10 @@ These aren't just chatbots — they're **coding agents**. Send "create a Python 
 
 ```bash
 # Your WeChat becomes a Codex terminal
-npx weixin-bot --provider codex --api-key sk-xxx
+npx wx-ai-bot --provider codex --api-key sk-xxx
 
 # Or a Claude Code terminal
-npx weixin-bot --provider claude-code --api-key sk-ant-xxx
+npx wx-ai-bot --provider claude-code --api-key sk-ant-xxx
 ```
 
 ---
@@ -188,7 +188,7 @@ Alpine-based. Non-root. Image size < 50MB.
 ## 🚀 All Options
 
 ```bash
-npx weixin-bot [options]
+npx wx-ai-bot [options]
 
 Options:
   --provider <name>   openai | claude | gemini | ollama | codex | claude-code | openclaw | custom
