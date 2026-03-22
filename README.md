@@ -1,53 +1,61 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/WeChat-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="WeChat" />
+<img src="https://img.shields.io/badge/微信-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="WeChat" />
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
-<img src="https://img.shields.io/badge/Zero_Deps-brightgreen?style=for-the-badge" alt="Zero Dependencies" />
+<img src="https://img.shields.io/badge/零依赖-brightgreen?style=for-the-badge" alt="Zero Dependencies" />
 
 # 🤖 weixin-bot
 
-### One command. Your WeChat AI bot is live.
+### 一条命令，微信 AI 机器人上线
 
 ```bash
 npx weixin-bot
 ```
 
-**No server. No config files. No dependencies. Just run it.**
+**不需要服务器。不需要配置文件。不需要安装依赖。直接跑。**
 
 [![npm version](https://img.shields.io/npm/v/weixin-bot.svg?style=flat-square)](https://www.npmjs.com/package/weixin-bot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg?style=flat-square)](https://nodejs.org)
-[![Docker](https://img.shields.io/badge/Docker-ready-blue.svg?style=flat-square)](#docker)
+[![Docker](https://img.shields.io/badge/Docker-ready-blue.svg?style=flat-square)](#-docker)
 
-[English](#-how-it-works) · [中文](#-中文文档)
+中文 · [English](./README.en.md)
 
 </div>
 
 ---
 
-## ⚡ 30-Second Demo
+## ⚠️ 兼容性说明
+
+> **目前仅支持 iOS 微信 8.0.70 版本**，安卓暂不支持（需等微信官方开放）。
+>
+> 如果你的 iOS 微信刚更新到最新版本，需要**在后台关掉微信再重新打开**，才能正常对接 Bot。
+
+---
+
+## ⚡ 30 秒上手
 
 ```bash
 $ npx weixin-bot
 
-  🤖 weixin-bot — One-command WeChat AI Bot
+  🤖 weixin-bot — 一键微信 AI 机器人
 
-  First time? Let's set up your AI backend.
+  首次使用？来设置你的 AI 后端。
 
-  Providers:
-    1) OpenAI        (GPT-4o, GPT-4o-mini, etc.)
+  AI 提供商：
+    1) OpenAI        (GPT-4o, GPT-4o-mini 等)
     2) Claude        (Anthropic API)
     3) Gemini        (Google)
-    4) Ollama        (Local, free)
-    5) Codex         (OpenAI Codex agent — local CLI)
-    6) Claude Code   (Anthropic agent — local CLI)
-    7) Custom        (any OpenAI-compatible API)
-    8) Echo mode     (no AI, just echo messages back)
+    4) Ollama        (本地运行，免费)
+    5) Codex         (OpenAI 编程 Agent)
+    6) Claude Code   (Anthropic 编程 Agent)
+    7) 自定义        (任何 OpenAI 兼容 API)
+    8) 回声模式      (不用 AI，原样返回消息)
 
-  Choose provider [1-8]: 1
+  选择提供商 [1-8]: 1
   OpenAI API key: sk-xxx
 
-  📱 Scan with WeChat:
+  📱 用微信扫码：
 
   ██████████████████████████████
   ██ ▄▄▄▄▄ █▀▄▀▄█▀█ ▄▄▄▄▄ ██
@@ -55,213 +63,183 @@ $ npx weixin-bot
   ██ ▀▀▀▀▀ █ ▀ █▄▀█ ▀▀▀▀▀ ██
   ██████████████████████████████
 
-  ✅ Login successful! Bot ID: wx_bot_xxx
+  ✅ 登录成功！Bot ID: wx_bot_xxx
 
-  🤖 weixin-bot is running!
+  🤖 weixin-bot 已启动！
   AI: openai (gpt-4o-mini)
-  Press Ctrl+C to stop.
+  按 Ctrl+C 停止。
 ```
 
-**That's it. Your WeChat is now powered by AI.**
+**搞定。你的微信现在有 AI 了。**
 
 ---
 
-## 🧠 8 AI Providers, Your Choice
+## 🧠 8 种 AI 提供商，随你选
 
-| Provider | Command | What It Does |
-|----------|---------|-------------|
-| **OpenAI** | `--provider openai` | GPT-4o, GPT-4o-mini — the classic |
-| **Claude** | `--provider claude` | Anthropic's Claude — great for long conversations |
-| **Gemini** | `--provider gemini` | Google's Gemini — free tier available |
-| **Ollama** | `--provider ollama` | Run AI locally, completely free |
-| **Codex** 🆕 | `--provider codex` | OpenAI's coding agent — writes actual code |
-| **Claude Code** 🆕 | `--provider claude-code` | Anthropic's coding agent — reads files, runs commands |
-| **Custom** | `--provider custom` | Any OpenAI-compatible API (OpenRouter, Groq, vLLM...) |
-| **Echo** | `--echo` | No AI, just echoes messages back (for testing) |
+| 提供商 | 命令 | 说明 |
+|--------|------|------|
+| **OpenAI** | `--provider openai` | GPT-4o, GPT-4o-mini — 经典之选 |
+| **Claude** | `--provider claude` | Anthropic Claude — 长对话很强 |
+| **Gemini** | `--provider gemini` | Google Gemini — 有免费额度 |
+| **Ollama** | `--provider ollama` | 本地运行 AI，完全免费 |
+| **Codex** 🆕 | `--provider codex` | OpenAI 编程 Agent — 能写真代码 |
+| **Claude Code** 🆕 | `--provider claude-code` | Anthropic 编程 Agent — 能读文件、跑命令 |
+| **自定义** | `--provider custom` | 任何 OpenAI 兼容 API（OpenRouter, Groq, vLLM...） |
+| **回声** | `--echo` | 不用 AI，原样返回消息（测试用） |
 
-### 🤯 Agent Mode (Codex & Claude Code)
+### 🤯 Agent 模式（Codex & Claude Code）
 
-These aren't just chatbots — they're **coding agents**. Send "create a Python script that..." and they'll actually write the code on your machine.
+这不只是聊天机器人 — 它们是**编程 Agent**。发一句"写个 Python 脚本..."，它们会在你的机器上真的写出代码。
 
 ```bash
-# Your WeChat becomes a Codex terminal
+# 你的微信变成 Codex 终端
 npx weixin-bot --provider codex --api-key sk-xxx
 
-# Or a Claude Code terminal
+# 或者 Claude Code 终端
 npx weixin-bot --provider claude-code --api-key sk-ant-xxx
 ```
 
 ---
 
-## 🔒 Security First
+## 🔒 安全第一
 
-We take security seriously. This isn't a toy.
+我们认真对待安全。这不是玩具。
 
-| Feature | Detail |
-|---------|--------|
-| 🔐 **Encrypted keys** | API keys encrypted with AES-256-CBC before saving to disk |
-| 🔑 **Machine-bound** | Encryption key derived from your machine's unique fingerprint |
-| 📁 **File permissions** | Config dir `chmod 700`, files `chmod 600` |
-| 🪵 **Log masking** | API keys show as `sk-abc...xyz` in all output |
-| 🚦 **Rate limiting** | Per-user: 3s cooldown + 10 msg/min max |
-| 🧹 **Input sanitization** | User messages sanitized in logs (anti log-injection) |
-| 🐳 **Non-root Docker** | Container runs as unprivileged user |
+| 特性 | 说明 |
+|------|------|
+| 🔐 **密钥加密** | API 密钥用 AES-256-CBC 加密后存盘 |
+| 🔑 **绑定机器** | 加密密钥由你机器的唯一指纹派生 |
+| 📁 **文件权限** | 配置目录 `chmod 700`，文件 `chmod 600` |
+| 🪵 **日志脱敏** | API 密钥在所有输出中显示为 `sk-abc...xyz` |
+| 🚦 **限流防刷** | 每用户：3 秒冷却 + 每分钟最多 10 条 |
+| 🧹 **输入清洗** | 用户消息在日志中做了防注入处理 |
+| 🐳 **非 root Docker** | 容器以非特权用户运行 |
 
 ---
 
-## 🔄 Auto-Reconnect
+## 🔄 自动重连
 
-Session expired? No problem. `weixin-bot` handles it automatically:
+Session 过期？没问题。`weixin-bot` 自动处理：
 
 ```
-  ⚠️ Session expired (code: -14)
-  🔄 Reconnecting (1/5) in 3s...
-  📱 Scan with WeChat:
-  [QR Code]
-  ✅ Reconnected!
+  ⚠️ Session 过期 (code: -14)
+  🔄 重连中 (1/5)，3 秒后...
+  📱 用微信扫码：
+  [二维码]
+  ✅ 重连成功！
 ```
 
-Exponential backoff: 3s → 5s → 10s → 20s → 30s. Up to 5 retries.
+指数退避：3s → 5s → 10s → 20s → 30s，最多重试 5 次。
 
 ---
 
 ## 🐳 Docker
 
 ```bash
-# Build
+# 构建
 docker build -t weixin-bot .
 
-# Run
+# 运行
 docker run -it \
   -v weixin-bot-data:/home/botuser/.weixin-bot \
   -e OPENAI_API_KEY=sk-xxx \
   weixin-bot
 ```
 
-Alpine-based. Non-root. Zero dependencies. Image size < 50MB.
+Alpine 镜像。非 root。零依赖。镜像 < 50MB。
 
 ---
 
-## 📝 Built-in Commands
+## 📝 内置命令
 
-Users can send these to your bot in WeChat:
+用户可以在微信里给你的 Bot 发这些命令：
 
-| Command | What It Does |
-|---------|-------------|
-| `/clear` | Clear conversation history |
-| `/help` | Show available commands |
-| `/ping` | Check if bot is alive → 🏓 Pong! |
-| `/status` | Show uptime, message count, AI provider |
+| 命令 | 功能 |
+|------|------|
+| `/clear` | 清空对话历史 |
+| `/help` | 显示可用命令 |
+| `/ping` | 检查 Bot 是否在线 → 🏓 Pong! |
+| `/status` | 显示运行时间、消息数、AI 提供商 |
 
 ---
 
-## 🏗️ How It Works
+## 🏗️ 工作原理
 
 ```
 ┌──────────────┐                    ┌─────────────────────┐
-│  User's      │  sends message     │                     │
-│  WeChat      │ ──────────────────►│  iLink Bot API      │
-│              │                    │  (Tencent Official)  │
+│  用户的       │  发送消息          │                     │
+│  微信         │ ──────────────────►│  iLink Bot API      │
+│              │                    │  (腾讯官方)          │
 └──────────────┘                    └──────────┬──────────┘
                                                │
                                     long-poll  │
                                                ▼
                                     ┌─────────────────────┐
                                     │  weixin-bot          │
-                                    │  (your machine)      │
+                                    │  (你的电脑)          │
                                     └──────────┬──────────┘
                                                │
-                                    API call   │
+                                    API 调用   │
                                                ▼
                                     ┌─────────────────────┐
-                                    │  AI Provider         │
+                                    │  AI 提供商           │
                                     │  OpenAI / Claude /   │
                                     │  Gemini / Ollama     │
                                     └──────────┬──────────┘
                                                │
-                                    reply      │
+                                    回复       │
                                                ▼
 ┌──────────────┐                    ┌─────────────────────┐
-│  User's      │  receives reply    │  iLink Bot API      │
-│  WeChat      │ ◄─────────────────│  (Tencent Official)  │
+│  用户的       │  收到回复          │  iLink Bot API      │
+│  微信         │ ◄─────────────────│  (腾讯官方)          │
 └──────────────┘                    └─────────────────────┘
 ```
 
-- **Official API** — Uses WeChat's iLink Bot API, not a hack
-- **Zero ban risk** — This is a legitimate bot platform by Tencent
-- **Privacy** — Everything runs on your machine, no third-party servers
+- **官方 API** — 使用微信 iLink Bot API，不是 hook
+- **零封号风险** — 这是腾讯的正规 Bot 平台
+- **隐私安全** — 所有数据在你本地处理，不经过第三方服务器
 
 ---
 
-## 🚀 All Options
+## 🚀 所有选项
 
 ```bash
-npx weixin-bot [options]
+npx weixin-bot [选项]
 
-Options:
+选项：
   --provider <name>   openai | claude | gemini | ollama | codex | claude-code | custom
-  --api-key <key>     API key for the provider
-  --base-url <url>    Custom API base URL
-  --model <name>      Model name (default: auto per provider)
-  --echo              Echo mode (no AI)
-  --login             Force re-login
-  -h, --help          Show help
-  -v, --version       Show version
+  --api-key <key>     AI 提供商的 API 密钥
+  --base-url <url>    自定义 API 地址
+  --model <name>      模型名称（默认：按提供商自动选择）
+  --echo              回声模式（不用 AI）
+  --login             强制重新登录
+  -h, --help          显示帮助
+  -v, --version       显示版本
 
-Environment Variables:
-  OPENAI_API_KEY      OpenAI API key
-  ANTHROPIC_API_KEY   Claude API key
-  GEMINI_API_KEY      Gemini API key
+环境变量：
+  OPENAI_API_KEY      OpenAI API 密钥
+  ANTHROPIC_API_KEY   Claude API 密钥
+  GEMINI_API_KEY      Gemini API 密钥
 ```
 
 ---
 
-## 🔗 Related
+## 🔗 相关项目
 
-| Project | Description |
-|---------|-------------|
-| [weixin-bot-sdk](https://github.com/abczsl520/weixin-bot-sdk) | Full SDK — build custom bots with media support, TypeScript, event-driven API |
-| [weixin-bot-sdk Wiki](https://github.com/abczsl520/weixin-bot-sdk/wiki) | Complete documentation, tutorials, and API reference |
+| 项目 | 说明 |
+|------|------|
+| [weixin-bot-sdk](https://github.com/abczsl520/weixin-bot-sdk) | 完整 SDK — 自定义机器人，支持媒体、TypeScript、事件驱动 |
+| [weixin-bot-sdk Wiki](https://github.com/abczsl520/weixin-bot-sdk/wiki) | 完整文档、教程、API 参考 |
 
 ---
 
-## 📋 中文文档
+## 重要说明
 
-### 一键启动
-
-```bash
-npx weixin-bot
-```
-
-扫码 → 选 AI → 搞定。就这么简单。
-
-### 支持 8 种 AI
-
-| 提供商 | 命令 | 说明 |
-|--------|------|------|
-| OpenAI | `--provider openai --api-key sk-xxx` | GPT-4o 系列 |
-| Claude | `--provider claude --api-key sk-ant-xxx` | Anthropic Claude |
-| Gemini | `--provider gemini --api-key xxx` | Google Gemini，有免费额度 |
-| Ollama | `--provider ollama --model llama3` | 本地运行，完全免费 |
-| Codex | `--provider codex` | OpenAI 编程 Agent，能写代码 |
-| Claude Code | `--provider claude-code` | Anthropic 编程 Agent |
-| 自定义 | `--provider custom --base-url URL` | 任何 OpenAI 兼容 API |
-| 回声 | `--echo` | 测试用，原样返回消息 |
-
-### 安全特性
-
-- 🔐 API 密钥加密存储（AES-256-CBC，绑定机器指纹）
-- 📁 配置文件权限 600，目录权限 700
-- 🪵 日志自动脱敏
-- 🚦 每用户限流防刷
-- 🐳 Docker 非 root 运行
-
-### 重要说明
-
-- 使用微信官方 iLink Bot API，**不是 hook**，零封号风险
+- 使用微信官方 **iLink Bot API**，不是 hook/注入
 - Bot 只能收到用户**主动发给它**的消息
-- 所有数据在你本地处理，不经过第三方服务器
+- Bot **不能**监听所有聊天或冒充个人号
 - 需要 Node.js 18+
+- **目前仅支持 iOS 微信 8.0.70**，安卓暂不支持
 
 ---
 
@@ -271,8 +249,8 @@ MIT © 2026
 
 <div align="center">
 
-**⭐ If this saved you time, star it!**
+**⭐ 觉得有用？给个 Star 吧！**
 
-**Built on WeChat's official iLink Bot API. Zero dependencies. Zero risk.**
+**基于微信官方 iLink Bot API。零依赖。零风险。**
 
 </div>
