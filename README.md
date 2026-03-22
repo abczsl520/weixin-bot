@@ -57,14 +57,18 @@ OPENAI_API_KEY=sk-xxx npx weixin-bot
 ## Features
 
 - 🚀 **One command** — `npx weixin-bot` and you're live
-- 🧠 **Multi-AI** — OpenAI, Claude, Gemini, Ollama, or any OpenAI-compatible API
+- 🧠 **Multi-AI** — OpenAI, Claude, Gemini, Ollama, Codex, Claude Code, or any OpenAI-compatible API
 - 💬 **Smart replies** — Per-user conversation history with context
 - ⌨️ **Typing indicators** — Shows "typing..." while AI thinks
 - 💾 **Auto-save** — Login token + config persist across restarts
-- 📝 **Slash commands** — `/clear`, `/help`, `/ping` built-in
+- 📝 **Slash commands** — `/clear`, `/help`, `/ping`, `/status` built-in
 - 🔒 **Official API** — Uses WeChat's iLink Bot API, zero ban risk
 - 📦 **Zero dependencies** — Pure Node.js, nothing to install
 - 🔀 **Long message splitting** — Auto-splits replies that exceed WeChat limits
+- 📱 **Terminal QR code** — Scan directly from terminal, no browser needed
+- 🔄 **Auto-reconnect** — Reconnects automatically when session expires (up to 5 retries with backoff)
+- 🛡️ **Security** — API keys encrypted on disk, config files chmod 600, log masking, rate limiting
+- 🐳 **Docker ready** — Dockerfile included, runs as non-root user
 
 ## Supported AI Providers
 
@@ -102,6 +106,41 @@ Users can send these commands to the bot:
 | `/clear` | Clear conversation history |
 | `/help` | Show available commands |
 | `/ping` | Check if bot is alive |
+| `/status` | Show bot uptime and stats |
+
+## Security
+
+- 🔐 API keys are **encrypted** before saving to disk (AES-256-CBC, machine-bound key)
+- 📁 Config files are `chmod 600` (owner-only read/write)
+- 🔒 Config directory is `chmod 700`
+- 🪵 API keys are **masked** in all log output (`sk-abc...xyz`)
+- 🚦 Per-user **rate limiting** (3s cooldown + 10 msg/min max)
+- 🧹 User input is **sanitized** in logs (no log injection)
+- 🐳 Docker runs as **non-root** user
+
+## Docker
+
+```bash
+# Build
+docker build -t weixin-bot .
+
+# Run (interactive for QR scan)
+docker run -it -v weixin-bot-data:/home/botuser/.weixin-bot weixin-bot --provider openai --api-key sk-xxx
+
+# Run with env vars
+docker run -it -v weixin-bot-data:/home/botuser/.weixin-bot -e OPENAI_API_KEY=sk-xxx weixin-bot
+```
+
+## Auto-Reconnect
+
+When the WeChat session expires, `weixin-bot` automatically:
+
+1. Detects the expired session
+2. Waits with exponential backoff (3s → 5s → 10s → 20s → 30s)
+3. Re-initiates QR login
+4. Resumes message polling
+
+Up to 5 reconnect attempts before giving up.
 
 ## How It Works
 

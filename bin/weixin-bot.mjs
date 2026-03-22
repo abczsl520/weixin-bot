@@ -12,7 +12,7 @@
 import { parseArgs } from 'node:util';
 import { startBot } from '../lib/bot.mjs';
 import { interactiveSetup } from '../lib/setup.mjs';
-import { loadConfig, saveConfig } from '../lib/config.mjs';
+import { loadConfigWithKey, saveConfig } from '../lib/config.mjs';
 
 const { values: args } = parseArgs({
   options: {
@@ -74,7 +74,7 @@ if (args.help) {
 async function main() {
   console.log('\n  🤖 weixin-bot — One-command WeChat AI Bot\n');
 
-  let config = loadConfig();
+  let config = loadConfigWithKey();
 
   // Merge CLI args into config
   if (args['api-key'])  config.apiKey = args['api-key'];
