@@ -1,184 +1,231 @@
 <div align="center">
 
+<img src="https://img.shields.io/badge/WeChat-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="WeChat" />
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Zero_Deps-brightgreen?style=for-the-badge" alt="Zero Dependencies" />
+
 # 🤖 weixin-bot
 
-**One command. Your WeChat AI bot is live.**
+### One command. Your WeChat AI bot is live.
 
 ```bash
 npx weixin-bot
 ```
 
-Scan QR → Pick your AI → Done. That's it.
+**No server. No config files. No dependencies. Just run it.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](#)
+[![npm version](https://img.shields.io/npm/v/weixin-bot.svg?style=flat-square)](https://www.npmjs.com/package/weixin-bot)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg?style=flat-square)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/Docker-ready-blue.svg?style=flat-square)](#docker)
 
-[English](#quick-start) · [中文](#中文)
+[English](#-how-it-works) · [中文](#-中文文档)
 
 </div>
 
 ---
 
-## Quick Start
+## ⚡ 30-Second Demo
 
 ```bash
-npx weixin-bot
+$ npx weixin-bot
+
+  🤖 weixin-bot — One-command WeChat AI Bot
+
+  First time? Let's set up your AI backend.
+
+  Providers:
+    1) OpenAI        (GPT-4o, GPT-4o-mini, etc.)
+    2) Claude        (Anthropic API)
+    3) Gemini        (Google)
+    4) Ollama        (Local, free)
+    5) Codex         (OpenAI Codex agent — local CLI)
+    6) Claude Code   (Anthropic agent — local CLI)
+    7) Custom        (any OpenAI-compatible API)
+    8) Echo mode     (no AI, just echo messages back)
+
+  Choose provider [1-8]: 1
+  OpenAI API key: sk-xxx
+
+  📱 Scan with WeChat:
+
+  ██████████████████████████████
+  ██ ▄▄▄▄▄ █▀▄▀▄█▀█ ▄▄▄▄▄ ██
+  ██ █   █ █▄▀▄ ▀██ █   █ ██
+  ██ ▀▀▀▀▀ █ ▀ █▄▀█ ▀▀▀▀▀ ██
+  ██████████████████████████████
+
+  ✅ Login successful! Bot ID: wx_bot_xxx
+
+  🤖 weixin-bot is running!
+  AI: openai (gpt-4o-mini)
+  Press Ctrl+C to stop.
 ```
 
-That's literally it. The interactive setup will guide you through:
+**That's it. Your WeChat is now powered by AI.**
 
-1. **Choose AI provider** — OpenAI, Claude, Gemini, Ollama, or any custom API
-2. **Scan QR code** — With your WeChat mobile app
-3. **Done** — Your bot is live and replying to messages
+---
 
-### With Options
+## 🧠 8 AI Providers, Your Choice
 
-```bash
-# Use OpenAI
-npx weixin-bot --provider openai --api-key sk-xxx
+| Provider | Command | What It Does |
+|----------|---------|-------------|
+| **OpenAI** | `--provider openai` | GPT-4o, GPT-4o-mini — the classic |
+| **Claude** | `--provider claude` | Anthropic's Claude — great for long conversations |
+| **Gemini** | `--provider gemini` | Google's Gemini — free tier available |
+| **Ollama** | `--provider ollama` | Run AI locally, completely free |
+| **Codex** 🆕 | `--provider codex` | OpenAI's coding agent — writes actual code |
+| **Claude Code** 🆕 | `--provider claude-code` | Anthropic's coding agent — reads files, runs commands |
+| **Custom** | `--provider custom` | Any OpenAI-compatible API (OpenRouter, Groq, vLLM...) |
+| **Echo** | `--echo` | No AI, just echoes messages back (for testing) |
 
-# Use Claude
-npx weixin-bot --provider claude --api-key sk-ant-xxx
+### 🤯 Agent Mode (Codex & Claude Code)
 
-# Use local Ollama (free!)
-npx weixin-bot --provider ollama --model llama3
-
-# Use any OpenAI-compatible API
-npx weixin-bot --provider custom --base-url https://my-proxy.com/v1 --api-key xxx
-
-# Echo mode (no AI, just echoes messages back)
-npx weixin-bot --echo
-
-# Environment variables work too
-OPENAI_API_KEY=sk-xxx npx weixin-bot
-```
-
-## Features
-
-- 🚀 **One command** — `npx weixin-bot` and you're live
-- 🧠 **Multi-AI** — OpenAI, Claude, Gemini, Ollama, Codex, Claude Code, or any OpenAI-compatible API
-- 💬 **Smart replies** — Per-user conversation history with context
-- ⌨️ **Typing indicators** — Shows "typing..." while AI thinks
-- 💾 **Auto-save** — Login token + config persist across restarts
-- 📝 **Slash commands** — `/clear`, `/help`, `/ping`, `/status` built-in
-- 🔒 **Official API** — Uses WeChat's iLink Bot API, zero ban risk
-- 📦 **Zero dependencies** — Pure Node.js, nothing to install
-- 🔀 **Long message splitting** — Auto-splits replies that exceed WeChat limits
-- 📱 **Terminal QR code** — Scan directly from terminal, no browser needed
-- 🔄 **Auto-reconnect** — Reconnects automatically when session expires (up to 5 retries with backoff)
-- 🛡️ **Security** — API keys encrypted on disk, config files chmod 600, log masking, rate limiting
-- 🐳 **Docker ready** — Dockerfile included, runs as non-root user
-
-## Supported AI Providers
-
-| Provider | Command | Free? |
-|----------|---------|-------|
-| OpenAI | `--provider openai --api-key sk-xxx` | No |
-| Claude | `--provider claude --api-key sk-ant-xxx` | No |
-| Gemini | `--provider gemini --api-key xxx` | Free tier |
-| Ollama | `--provider ollama --model llama3` | ✅ Yes (local) |
-| Codex | `--provider codex` | Needs OpenAI key |
-| Claude Code | `--provider claude-code` | Needs Anthropic key |
-| Custom | `--provider custom --base-url URL --api-key KEY` | Varies |
-| Echo | `--echo` | ✅ Yes |
-
-### Agent Providers (Codex & Claude Code)
-
-These run as local coding agents — they can read files, run commands, and write code:
+These aren't just chatbots — they're **coding agents**. Send "create a Python script that..." and they'll actually write the code on your machine.
 
 ```bash
-# OpenAI Codex agent (requires: npm i -g @openai/codex)
+# Your WeChat becomes a Codex terminal
 npx weixin-bot --provider codex --api-key sk-xxx
 
-# Claude Code agent (requires: npm i -g @anthropic-ai/claude-code)
+# Or a Claude Code terminal
 npx weixin-bot --provider claude-code --api-key sk-ant-xxx
 ```
 
-Send a message like "create a hello world Python script" and the agent will actually do it.
+---
 
-## Built-in Commands
+## 🔒 Security First
 
-Users can send these commands to the bot:
+We take security seriously. This isn't a toy.
 
-| Command | Description |
-|---------|-------------|
-| `/clear` | Clear conversation history |
-| `/help` | Show available commands |
-| `/ping` | Check if bot is alive |
-| `/status` | Show bot uptime and stats |
+| Feature | Detail |
+|---------|--------|
+| 🔐 **Encrypted keys** | API keys encrypted with AES-256-CBC before saving to disk |
+| 🔑 **Machine-bound** | Encryption key derived from your machine's unique fingerprint |
+| 📁 **File permissions** | Config dir `chmod 700`, files `chmod 600` |
+| 🪵 **Log masking** | API keys show as `sk-abc...xyz` in all output |
+| 🚦 **Rate limiting** | Per-user: 3s cooldown + 10 msg/min max |
+| 🧹 **Input sanitization** | User messages sanitized in logs (anti log-injection) |
+| 🐳 **Non-root Docker** | Container runs as unprivileged user |
 
-## Security
+---
 
-- 🔐 API keys are **encrypted** before saving to disk (AES-256-CBC, machine-bound key)
-- 📁 Config files are `chmod 600` (owner-only read/write)
-- 🔒 Config directory is `chmod 700`
-- 🪵 API keys are **masked** in all log output (`sk-abc...xyz`)
-- 🚦 Per-user **rate limiting** (3s cooldown + 10 msg/min max)
-- 🧹 User input is **sanitized** in logs (no log injection)
-- 🐳 Docker runs as **non-root** user
+## 🔄 Auto-Reconnect
 
-## Docker
+Session expired? No problem. `weixin-bot` handles it automatically:
+
+```
+  ⚠️ Session expired (code: -14)
+  🔄 Reconnecting (1/5) in 3s...
+  📱 Scan with WeChat:
+  [QR Code]
+  ✅ Reconnected!
+```
+
+Exponential backoff: 3s → 5s → 10s → 20s → 30s. Up to 5 retries.
+
+---
+
+## 🐳 Docker
 
 ```bash
 # Build
 docker build -t weixin-bot .
 
-# Run (interactive for QR scan)
-docker run -it -v weixin-bot-data:/home/botuser/.weixin-bot weixin-bot --provider openai --api-key sk-xxx
-
-# Run with env vars
-docker run -it -v weixin-bot-data:/home/botuser/.weixin-bot -e OPENAI_API_KEY=sk-xxx weixin-bot
+# Run
+docker run -it \
+  -v weixin-bot-data:/home/botuser/.weixin-bot \
+  -e OPENAI_API_KEY=sk-xxx \
+  weixin-bot
 ```
 
-## Auto-Reconnect
-
-When the WeChat session expires, `weixin-bot` automatically:
-
-1. Detects the expired session
-2. Waits with exponential backoff (3s → 5s → 10s → 20s → 30s)
-3. Re-initiates QR login
-4. Resumes message polling
-
-Up to 5 reconnect attempts before giving up.
-
-## How It Works
-
-```
-User's WeChat ──► iLink Bot API ──► weixin-bot ──► AI Provider
-                                         │              │
-                                         ◄──────────────┘
-                                         │
-User's WeChat ◄── iLink Bot API ◄────────┘
-```
-
-1. User sends message to bot via WeChat
-2. `weixin-bot` receives it via long-poll
-3. Message is sent to your chosen AI provider
-4. AI response is sent back to the user
-
-## Configuration
-
-Config is saved to `~/.weixin-bot/config.json`. Login token is saved to `~/.weixin-bot/token.json`.
-
-To reconfigure: delete `~/.weixin-bot/config.json` and run again.
-
-To re-login: `npx weixin-bot --login`
-
-## SDK
-
-Need more control? Use [weixin-bot-sdk](https://github.com/abczsl520/weixin-bot-sdk) — the full SDK with media support, TypeScript, and event-driven API.
-
-## Important Notes
-
-- This uses WeChat's **official iLink Bot API** — not a hack
-- Bot can only receive messages users **send directly to it**
-- Bot **cannot** monitor all chats or act as a personal account
-- **No ban risk** — this is an official bot platform
+Alpine-based. Non-root. Zero dependencies. Image size < 50MB.
 
 ---
 
-## 中文
+## 📝 Built-in Commands
+
+Users can send these to your bot in WeChat:
+
+| Command | What It Does |
+|---------|-------------|
+| `/clear` | Clear conversation history |
+| `/help` | Show available commands |
+| `/ping` | Check if bot is alive → 🏓 Pong! |
+| `/status` | Show uptime, message count, AI provider |
+
+---
+
+## 🏗️ How It Works
+
+```
+┌──────────────┐                    ┌─────────────────────┐
+│  User's      │  sends message     │                     │
+│  WeChat      │ ──────────────────►│  iLink Bot API      │
+│              │                    │  (Tencent Official)  │
+└──────────────┘                    └──────────┬──────────┘
+                                               │
+                                    long-poll  │
+                                               ▼
+                                    ┌─────────────────────┐
+                                    │  weixin-bot          │
+                                    │  (your machine)      │
+                                    └──────────┬──────────┘
+                                               │
+                                    API call   │
+                                               ▼
+                                    ┌─────────────────────┐
+                                    │  AI Provider         │
+                                    │  OpenAI / Claude /   │
+                                    │  Gemini / Ollama     │
+                                    └──────────┬──────────┘
+                                               │
+                                    reply      │
+                                               ▼
+┌──────────────┐                    ┌─────────────────────┐
+│  User's      │  receives reply    │  iLink Bot API      │
+│  WeChat      │ ◄─────────────────│  (Tencent Official)  │
+└──────────────┘                    └─────────────────────┘
+```
+
+- **Official API** — Uses WeChat's iLink Bot API, not a hack
+- **Zero ban risk** — This is a legitimate bot platform by Tencent
+- **Privacy** — Everything runs on your machine, no third-party servers
+
+---
+
+## 🚀 All Options
+
+```bash
+npx weixin-bot [options]
+
+Options:
+  --provider <name>   openai | claude | gemini | ollama | codex | claude-code | custom
+  --api-key <key>     API key for the provider
+  --base-url <url>    Custom API base URL
+  --model <name>      Model name (default: auto per provider)
+  --echo              Echo mode (no AI)
+  --login             Force re-login
+  -h, --help          Show help
+  -v, --version       Show version
+
+Environment Variables:
+  OPENAI_API_KEY      OpenAI API key
+  ANTHROPIC_API_KEY   Claude API key
+  GEMINI_API_KEY      Gemini API key
+```
+
+---
+
+## 🔗 Related
+
+| Project | Description |
+|---------|-------------|
+| [weixin-bot-sdk](https://github.com/abczsl520/weixin-bot-sdk) | Full SDK — build custom bots with media support, TypeScript, event-driven API |
+| [weixin-bot-sdk Wiki](https://github.com/abczsl520/weixin-bot-sdk/wiki) | Complete documentation, tutorials, and API reference |
+
+---
+
+## 📋 中文文档
 
 ### 一键启动
 
@@ -186,35 +233,46 @@ Need more control? Use [weixin-bot-sdk](https://github.com/abczsl520/weixin-bot-
 npx weixin-bot
 ```
 
-扫码 → 选 AI → 搞定。
+扫码 → 选 AI → 搞定。就这么简单。
 
-### 支持的 AI
+### 支持 8 种 AI
 
-| 提供商 | 命令 | 免费？ |
-|--------|------|--------|
-| OpenAI | `--provider openai --api-key sk-xxx` | 否 |
-| Claude | `--provider claude --api-key sk-ant-xxx` | 否 |
-| Gemini | `--provider gemini --api-key xxx` | 有免费额度 |
-| Ollama | `--provider ollama --model llama3` | ✅ 免费（本地） |
-| Codex | `--provider codex` | 需 OpenAI key |
-| Claude Code | `--provider claude-code` | 需 Anthropic key |
-| 自定义 | `--provider custom --base-url URL --api-key KEY` | 看情况 |
-| 回声模式 | `--echo` | ✅ 免费 |
+| 提供商 | 命令 | 说明 |
+|--------|------|------|
+| OpenAI | `--provider openai --api-key sk-xxx` | GPT-4o 系列 |
+| Claude | `--provider claude --api-key sk-ant-xxx` | Anthropic Claude |
+| Gemini | `--provider gemini --api-key xxx` | Google Gemini，有免费额度 |
+| Ollama | `--provider ollama --model llama3` | 本地运行，完全免费 |
+| Codex | `--provider codex` | OpenAI 编程 Agent，能写代码 |
+| Claude Code | `--provider claude-code` | Anthropic 编程 Agent |
+| 自定义 | `--provider custom --base-url URL` | 任何 OpenAI 兼容 API |
+| 回声 | `--echo` | 测试用，原样返回消息 |
 
-### 注意
+### 安全特性
 
-- 使用微信官方 iLink Bot API，不是 hook，零封号风险
-- Bot 只能收到用户主动发给它的消息
+- 🔐 API 密钥加密存储（AES-256-CBC，绑定机器指纹）
+- 📁 配置文件权限 600，目录权限 700
+- 🪵 日志自动脱敏
+- 🚦 每用户限流防刷
+- 🐳 Docker 非 root 运行
+
+### 重要说明
+
+- 使用微信官方 iLink Bot API，**不是 hook**，零封号风险
+- Bot 只能收到用户**主动发给它**的消息
+- 所有数据在你本地处理，不经过第三方服务器
 - 需要 Node.js 18+
 
 ---
 
 ## License
 
-MIT © 2025
+MIT © 2026
 
 <div align="center">
 
-**⭐ Star if this saved you time!**
+**⭐ If this saved you time, star it!**
+
+**Built on WeChat's official iLink Bot API. Zero dependencies. Zero risk.**
 
 </div>
