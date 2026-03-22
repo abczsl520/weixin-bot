@@ -74,7 +74,7 @@ $ npx weixin-bot
 
 ---
 
-## 🧠 8 AI Providers, Your Choice
+## 🧠 9 AI Providers, Your Choice
 
 | Provider | Command | What It Does |
 |----------|---------|-------------|
@@ -84,6 +84,7 @@ $ npx weixin-bot
 | **Ollama** | `--provider ollama` | Run AI locally, completely free |
 | **Codex** 🆕 | `--provider codex` | OpenAI's coding agent — writes actual code |
 | **Claude Code** 🆕 | `--provider claude-code` | Anthropic's coding agent — reads files, runs commands |
+| **OpenClaw** 🆕 | `--provider openclaw` | OpenClaw AI gateway — auto-detects local instance |
 | **Custom** | `--provider custom` | Any OpenAI-compatible API (OpenRouter, Groq, vLLM...) |
 | **Echo** | `--echo` | No AI, just echoes messages back (for testing) |
 
@@ -190,7 +191,7 @@ Alpine-based. Non-root. Image size < 50MB.
 npx weixin-bot [options]
 
 Options:
-  --provider <name>   openai | claude | gemini | ollama | codex | claude-code | custom
+  --provider <name>   openai | claude | gemini | ollama | codex | claude-code | openclaw | custom
   --api-key <key>     API key for the provider
   --base-url <url>    Custom API base URL
   --model <name>      Model name (default: auto per provider)

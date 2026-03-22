@@ -46,7 +46,7 @@ if (args.help) {
     npx weixin-bot --login            Force re-login (new QR code)
 
   Options:
-    --provider <name>   AI provider: openai | claude | gemini | ollama | codex | claude-code | custom
+    --provider <name>   AI provider: openai | claude | gemini | ollama | codex | claude-code | openclaw | custom
     --api-key <key>     API key for the provider
     --base-url <url>    Custom API base URL (for proxies or custom endpoints)
     --model <name>      Model name (default: auto per provider)
@@ -67,6 +67,7 @@ if (args.help) {
     npx weixin-bot --provider codex                  # OpenAI Codex agent (local CLI)
     npx weixin-bot --provider claude-code             # Claude Code agent (local CLI)
     npx weixin-bot --provider custom --base-url https://my-proxy.com/v1 --api-key xxx
+    npx weixin-bot --provider openclaw                # OpenClaw AI gateway (auto-detect local)
     OPENAI_API_KEY=sk-xxx npx weixin-bot
 `);
   process.exit(0);

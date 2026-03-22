@@ -74,7 +74,7 @@ $ npx weixin-bot
 
 ---
 
-## 🧠 8 种 AI 提供商，随你选
+## 🧠 9 种 AI 提供商，随你选
 
 | 提供商 | 命令 | 说明 |
 |--------|------|------|
@@ -84,6 +84,7 @@ $ npx weixin-bot
 | **Ollama** | `--provider ollama` | 本地运行 AI，完全免费 |
 | **Codex** 🆕 | `--provider codex` | OpenAI 编程 Agent — 能写真代码 |
 | **Claude Code** 🆕 | `--provider claude-code` | Anthropic 编程 Agent — 能读文件、跑命令 |
+| **OpenClaw** 🆕 | `--provider openclaw` | OpenClaw AI 网关 — 自动检测本地实例 |
 | **自定义** | `--provider custom` | 任何 OpenAI 兼容 API（OpenRouter, Groq, vLLM...） |
 | **回声** | `--echo` | 不用 AI，原样返回消息（测试用） |
 
@@ -207,7 +208,7 @@ Alpine 镜像。非 root。零依赖。镜像 < 50MB。
 npx weixin-bot [选项]
 
 选项：
-  --provider <name>   openai | claude | gemini | ollama | codex | claude-code | custom
+  --provider <name>   openai | claude | gemini | ollama | codex | claude-code | openclaw | custom
   --api-key <key>     AI 提供商的 API 密钥
   --base-url <url>    自定义 API 地址
   --model <name>      模型名称（默认：按提供商自动选择）
